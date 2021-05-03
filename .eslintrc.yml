@@ -1,0 +1,32 @@
+env:
+  browser: true
+  es2020: true
+extends:
+  - standard
+  - eslint:recommended # 1
+  - plugin:@typescript-eslint/recommended # 1
+  - plugin:import/errors # 2
+  - plugin:import/warnings # 2
+  - plugin:import/typescript # 2
+  - prettier # 3
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: 11
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+rules:
+  '@typescript-eslint/no-unused-vars': ['warn', argsIgnorePattern: '^_'] # 5
+  camelcase: ['warn', allow: ['_[^_]+$']]
+  no-useless-constructor: ['off']
+settings:
+  import/resolver:
+    node:
+      paths: ['.'] # 4
+# 0. this file was created by 'npx eslint --init'
+# 1. https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin
+# 2. https://github.com/benmosher/eslint-plugin-import
+# 3. https://github.com/prettier/eslint-config-prettier
+# 3. https://stackoverflow.com/questions/44611190/using-jest-in-my-react-app-describe-is-not-defined
+# 4. https://stackoverflow.com/questions/56674651/create-react-app-v3-not-running-jest-tests-with-absolute-imports-of-other-compon
+# 5. https://eslint.org/docs/rules/no-unused-vars#argsignorepattern
